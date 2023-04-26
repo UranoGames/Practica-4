@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Frutas</title>
+  </head>
+  <body>
+    <h1>Selecciona una fruta:</h1>
+    <select id="frutas">
+      <option value="manzana">Manzana</option>
+      <option value="pera">Pera</option>
+      <option value="mango">Mango</option>
+    </select>
+    <br><br>
+    <img id="fruta-imagen" src="Imagenes/frutas.png" alt="Imagen de fruta">
+    <script>
+      const frutas = {
+        manzana: {
+          imagen: 'manzana.jpg',
+          nombre: 'Manzana',
+          descripcion: 'La manzana es una fruta muy popular y saludable. Es rica en antioxidantes y fibra.'
+        },
+        pera: {
+          imagen: 'pera.jpg',
+          nombre: 'Pera',
+          descripcion: 'La pera es una fruta jugosa y dulce, rica en fibra y vitaminas.'
+        },
+        mango: {
+          imagen: 'mango.jpg',
+          nombre: 'Mango',
+          descripcion: 'El mango es una fruta tropical muy sabrosa y nutritiva, rica en vitamina C y antioxidantes.'
+        }
+      };
+
+      const select = document.getElementById('frutas');
+      const imagen = document.getElementById('fruta-imagen');
+
+      select.addEventListener('change', () => {
+        const opcionSeleccionada = select.value;
+        if (opcionSeleccionada === 'manzana') {
+          imagen.src = 'Imagenes/manzana.png';
+        } else if (opcionSeleccionada === 'pera') {
+          imagen.src = 'Imagenes/pera.png';
+        } else if (opcionSeleccionada === 'mango') {
+          imagen.src = 'Imagenes/mango.png';
+        }
+
+        // Agregamos el estilo CSS para el tamaño de la imagen
+        imagen.style.width = '200px';
+        imagen.style.height = '200px';
+      });
+
+      imagen.addEventListener('click', () => {
+        const nombreFruta = select.value;
+        const imagenSrc = imagen.src;
+        const descripcionFruta = frutas[nombreFruta].descripcion;
+        localStorage.setItem('nombreFruta', nombreFruta);
+        localStorage.setItem('imagenSrc', imagenSrc);
+        localStorage.setItem('descripcionFruta', descripcionFruta);
+        window.location.href = 'frutas.html';
+      });
+    </script>
+  </body>
+</html>

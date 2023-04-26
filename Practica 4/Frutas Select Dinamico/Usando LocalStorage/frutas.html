@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fruta seleccionada</title>
+  </head>
+  <body>
+    <h1>Fruta seleccionada:</h1>
+    <h2 id="nombre-fruta"></h2>
+    <img id="fruta-imagen" src="" alt="Imagen de fruta">
+    <p id="descripcion-fruta"></p>
+    <script>
+ 
+    const nombreFruta = localStorage.getItem('nombreFruta');
+      const imagenSrc = localStorage.getItem('imagenSrc');
+      const descripcionFruta = localStorage.getItem('descripcionFruta');
+
+      const nombreFrutaElement = document.getElementById('nombre-fruta');
+      const imagenElement = document.getElementById('fruta-imagen');
+      const descripcionFrutaElement = document.getElementById('descripcion-fruta');
+
+      nombreFrutaElement.textContent = nombreFruta;
+      imagenElement.src = imagenSrc;
+      descripcionFrutaElement.textContent = descripcionFruta;
+
+      imagenElement.style.width = '200px';
+      imagenElement.style.height = '200px';
+    </script>
+  </body>
+</html>
